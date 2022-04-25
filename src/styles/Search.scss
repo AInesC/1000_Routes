@@ -1,0 +1,33 @@
+@use "./colors" as c;
+
+form {
+	width: 90vw;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+input {
+	outline: none;
+	background-color: #444;
+	color: c.$font;
+	border-radius: 30px;
+	border: none;
+	width: 100%;
+	padding: 0.5rem;
+	font-weight: 600;
+}
+
+.seachOutput {
+	padding: 2rem 0;
+	width: 90vw;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.article {
+	width: 100%;
+
+	&__summary {
+		font-weight: 300;
+	}
+}

@@ -1,0 +1,42 @@
+@use "./colors" as c;
+
+.travel-topics {
+	&__carrousel {
+		position: relative;
+
+		img {
+			object-fit: contain;
+		}
+	}
+
+	&__title {
+		font-size: 1.5rem;
+		font-weight: 200;
+		padding-bottom: 0.3rem;
+
+		a {
+			color: c.$font;
+		}
+	}
+
+	&__title,
+	&__phrase {
+		padding-left: 5vw;
+	}
+}
+
+.btn {
+	&--previous,
+	&--next {
+		position: absolute;
+		top: 50%;
+	}
+
+	&--previous {
+		left: 5%;
+	}
+
+	&--next {
+		right: 5%;
+	}
+}

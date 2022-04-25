@@ -1,0 +1,29 @@
+@use "./colors" as c;
+
+.explore {
+	padding-bottom: 2rem;
+
+	&__grid {
+		padding-top: 1.5rem;
+	}
+
+	&__title {
+		font-size: 6vmin;
+		font-weight: 600;
+		text-align: center;
+	}
+}
+
+.explore-card {
+	width: 100%;
+	padding-bottom: 1rem;
+
+	&__title,
+	&__phrase {
+		padding-left: 1rem;
+	}
+
+	&__image {
+		object-fit: cover;
+	}
+}

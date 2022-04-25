@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 html,
 body,
 div,
@@ -7,10 +11,12 @@ h2,
 h3,
 p,
 a,
+button,
 img,
 ul,
 li,
 form,
+input,
 article,
 footer,
 header,
@@ -26,6 +32,7 @@ section {
 
 body {
 	font-family: "Raleway", sans-serif;
+	overflow-x: hidden;
 }
 
 ul {
@@ -34,4 +41,11 @@ ul {
 
 a {
 	text-decoration: none;
+}
+
+button {
+	outline: none;
+	cursor: pointer;
+	background: transparent;
+	border: none;
 }

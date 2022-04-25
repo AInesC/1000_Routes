@@ -1,0 +1,22 @@
+@use "./colors" as c;
+
+Header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 90vw;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 2rem 0;
+	max-height: 15vh;
+
+	.brand {
+		a {
+			color: c.$font;
+			font-weight: 300;
+			font-size: 2rem;
+			font-style: italic;
+			text-shadow: 0 2px 4px c.$font;
+		}
+	}
+}

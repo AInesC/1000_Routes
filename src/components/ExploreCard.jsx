@@ -1,10 +1,13 @@
-export default function ExploreCard() {
+export default function ExploreCard(props) {
 	return (
 		<div className="explore-card">
-			<h2 className="explore-card__title">Continent</h2>
-			<p className="explore-card__subtitle">
-				Some really convincing catch phrase!
-			</p>
+			<img
+				className="explore-card__image card-image"
+				src={props.imgSrc}
+				alt=""
+			/>
+			<h2 className="explore-card__title card-title">{props.name}</h2>
+			<p className="explore-card__subtitle">{props.phrase}</p>
 		</div>
 	);
 }

@@ -1,0 +1,25 @@
+@use "./colors" as c;
+
+.about {
+	background: c.$font url(../../public/images/about/about-desktop.jpg) no-repeat
+		center;
+	background-size: cover;
+	text-align: center;
+
+	.veil {
+		display: grid;
+		justify-items: center;
+		align-content: center;
+		gap: 2rem;
+	}
+
+	&__title {
+		font-size: 8vmin;
+	}
+
+	&__description {
+		padding: 0 1.5rem;
+		font-size: 5vmin;
+		line-height: 1.2em;
+	}
+}

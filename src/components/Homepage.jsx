@@ -1,3 +1,13 @@
+import "../styles/Homepage.scss";
+
 export default function Homepage() {
-	return <main>This is the homepage</main>;
+	return (
+		<main>
+			<section className="hero">
+				<div className="veil">
+					<h2 className="hero__title">Are you ready to start the journey?</h2>
+				</div>
+			</section>
+		</main>
+	);
 }
