@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "../styles/TravelTopics.scss";
 
 export default function TravelTopics() {
@@ -76,6 +77,15 @@ export default function TravelTopics() {
 
 		changeContent(i);
 	}
+
+	useEffect(() => {}, []);
+
+	useEffect(() => {
+		const timer = setInterval(nextImage, 5000);
+		return () => {
+			clearInterval(timer);
+		};
+	}, []);
 
 	return (
 		<main className="travel-topics">
