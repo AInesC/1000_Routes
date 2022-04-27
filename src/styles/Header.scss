@@ -1,6 +1,6 @@
 @use "./colors" as c;
 
-Header {
+header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -8,7 +8,6 @@ Header {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 2rem 0;
-	max-height: 15vh;
 
 	.brand {
 		a {
@@ -18,5 +17,21 @@ Header {
 			font-style: italic;
 			text-shadow: 0 2px 4px c.$font;
 		}
+	}
+}
+
+@media screen and (min-width: 600px) {
+	header {
+		justify-content: flex-start;
+		align-items: baseline;
+		gap: 2rem;
+
+		button {
+			display: none;
+		}
+	}
+
+	.search {
+		margin-left: auto;
 	}
 }

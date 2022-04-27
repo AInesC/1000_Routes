@@ -27,20 +27,14 @@ svg {
 	fill: c.$font;
 }
 
+a {
+	color: c.$font;
+}
+
 .grid--auto-fit {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
 	gap: 1.5rem;
-
-	/* 
-    APLICAR DEPOIS, SÓ PARA TAMANHOS MAIORES QUE MOBILE
-
-	&:hover {
-		border: 2px solid c.$font;
-		border-radius: 30px;
-	}
-
-    */
 }
 
 .card-image {
@@ -51,4 +45,19 @@ svg {
 .card-title {
 	font-size: 1.2rem;
 	font-weight: 700;
+}
+
+@media screen and (min-width: 900px) {
+	.card {
+		border: 2px solid transparent;
+
+		&:hover {
+			border: 2px solid c.$font;
+			border-radius: 30px;
+		}
+	}
+
+	.card-title {
+		font-size: 1.5rem;
+	}
 }

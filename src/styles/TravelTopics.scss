@@ -1,11 +1,17 @@
 @use "./colors" as c;
 
 .travel-topics {
+	max-height: 85vh;
+
 	&__carrousel {
 		position: relative;
+		max-width: 1200px;
+		margin: 0 auto;
+		height: 100%;
 
 		img {
-			object-fit: contain;
+			object-fit: cover;
+			width: 100%;
 		}
 	}
 
@@ -38,5 +44,16 @@
 
 	&--next {
 		right: 5%;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.btn {
+		width: 1.5rem;
+	}
+
+	img {
+		object-fit: cover;
+		max-height: 75vh;
 	}
 }

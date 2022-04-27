@@ -8,7 +8,7 @@ export default function Search() {
 			</form>
 			{1 != 1 && (
 				<section className="seachOutput grid--auto-fit">
-					<article>
+					<article className="card">
 						<img className="article__image card-image" />
 						<h2 className="article__title card-title"></h2>
 						<p className="article__summary"></p>

@@ -2,15 +2,23 @@
 
 .explore {
 	padding-bottom: 2rem;
-
-	&__grid {
-		padding-top: 1.5rem;
-	}
+	max-width: 1200px;
+	margin: 0 auto;
 
 	&__title {
-		font-size: 6vmin;
+		font-size: 5vmax;
 		font-weight: 600;
 		text-align: center;
+		padding-bottom: 0.6em;
+	}
+
+	&__description {
+		font-size: 5vmin;
+		font-weight: 200;
+		width: 90vw;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding-bottom: 2em;
 	}
 }
 
@@ -19,11 +27,36 @@
 	padding-bottom: 1rem;
 
 	&__title,
-	&__phrase {
+	&__subtitle {
 		padding-left: 1rem;
 	}
 
 	&__image {
 		object-fit: cover;
+	}
+
+	&__title {
+		padding-bottom: 0.5em;
+
+		a {
+			color: c.$font;
+		}
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.explore {
+		width: 90vw;
+	}
+
+	.explore-card {
+		&__title {
+			padding-left: 1.5rem;
+		}
+
+		&__subtitle {
+			font-size: 1.2rem;
+			padding: 0 1.5rem;
+		}
 	}
 }

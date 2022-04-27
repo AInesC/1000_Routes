@@ -9,17 +9,24 @@
 	.veil {
 		display: grid;
 		justify-items: center;
-		align-content: center;
+		align-content: start;
 		gap: 2rem;
+		padding-top: 20vh;
 	}
 
 	&__title {
-		font-size: 8vmin;
+		font-size: 2rem;
+	}
+
+	&__text {
+		display: grid;
+		gap: 1.5rem;
 	}
 
 	&__description {
 		padding: 0 1.5rem;
-		font-size: 5vmin;
+		font-size: 1.2rem;
 		line-height: 1.2em;
+		max-width: 1200px;
 	}
 }
