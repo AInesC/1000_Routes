@@ -3,7 +3,11 @@ import Nav from "./Nav";
 import "../styles/Header.scss";
 
 export default function Header() {
-	function showMenu() {}
+	const nav = document.getElementById("nav");
+
+	function showMenu() {
+		nav.classList.add("open");
+	}
 
 	return (
 		<header>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "../styles/TravelTopics.scss";
 
 export default function TravelTopics() {
@@ -29,7 +29,7 @@ export default function TravelTopics() {
 		},
 		{
 			title: "Activities",
-			text: "Go on and adventure...",
+			text: "Go on an adventure...",
 			imageS: "/images/travel-topics/activities.jpg",
 			imageL: "/images/travel-topics/activitiesL.jpg",
 			link: "https://en.wikivoyage.org/wiki/Activities",
@@ -37,26 +37,11 @@ export default function TravelTopics() {
 		},
 	];
 
-	const imageSrc = document.getElementById("carrousel-image");
-	const next = document.getElementById("next");
-	const previous = document.getElementById("previous");
-	const topicsLink = document.getElementById("topics-link");
-	const topicsText = document.getElementById("topics-text");
+	const [slide, setSlide] = useState(topics[0]);
 
 	let i = 0;
 
 	const max = topics.length - 1;
-
-	function changeContent(i) {
-		imageSrc.srcset = topics[i].imageL;
-		imageSrc.src = topics[i].imageS;
-
-		topicsLink.href = topics[i].link;
-		topicsLink.title = topics[i].linkInfo;
-		topicsLink.textContent = topics[i].title;
-
-		topicsText.textContent = topics[i].text;
-	}
 
 	function nextImage() {
 		i++;
@@ -65,7 +50,7 @@ export default function TravelTopics() {
 			i = 0;
 		}
 
-		changeContent(i);
+		setSlide(topics[i]);
 	}
 
 	function previousImage() {
@@ -75,10 +60,8 @@ export default function TravelTopics() {
 			i = max;
 		}
 
-		changeContent(i);
+		setSlide(topics[i]);
 	}
-
-	useEffect(() => {}, []);
 
 	useEffect(() => {
 		const timer = setInterval(nextImage, 5000);
@@ -103,8 +86,8 @@ export default function TravelTopics() {
 				</button>
 				<img
 					id="carrousel-image"
-					srcset="/images/travel-topics/foodL.jpg 641w"
-					src="/images/travel-topics/food.jpg"
+					srcSet={slide.imageL + " 641w"}
+					src={slide.imageS}
 					alt=""
 				/>
 				<button
@@ -119,16 +102,12 @@ export default function TravelTopics() {
 					</svg>
 				</button>
 				<h2 className="travel-topics__title">
-					<a
-						id="topics-link"
-						href="https://en.wikivoyage.org/wiki/Food_and_drink"
-						title="Go to WikiVoyage food and drink page"
-					>
-						Food and Drink
+					<a href={slide.link} title={slide.linkInfo}>
+						{slide.title}
 					</a>
 				</h2>
 				<p className="travel-topics__phrase" id="topics-text">
-					Taste some local specialities while travelling...
+					{slide.text}
 				</p>
 			</div>
 		</main>
