@@ -4,6 +4,10 @@
 	position: absolute;
 	top: 0;
 	left: -100vw;
+	width: 60vw;
+	height: 100vh;
+	background-color: c.$veil;
+	transition: transform 0.6s cubic-bezier(0.61, 1, 0.88, 1);
 
 	&__list {
 		display: flex;
@@ -14,9 +18,9 @@
 	}
 
 	&__item {
-		transition: all 0.3s ease-in-out;
 		font-size: 1.2rem;
 		color: c.$font;
+		transition: all 0.3s ease-in-out;
 
 		&::after {
 			content: "";
@@ -34,11 +38,24 @@
 			}
 		}
 	}
+
+	&__button {
+		padding-left: 1.5rem;
+		padding-top: 2rem;
+	}
+}
+
+.show {
+	transform: translateX(100vw);
+	transition: 0.6s;
+}
+.hide {
 }
 
 @media screen and (min-width: 600px) {
 	.menu {
 		position: static;
+		background-color: unset;
 
 		&__list {
 			justify-content: center;
