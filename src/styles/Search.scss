@@ -21,7 +21,7 @@ input {
 	font-weight: 600;
 }
 
-.seachOutput {
+.results {
 	padding: 2rem 0;
 	width: 90vw;
 	max-width: 1200px;
@@ -32,9 +32,9 @@ input {
 	width: 100%;
 	display: grid;
 	gap: 1rem;
-	justify-items: start;
+	justify-items: center;
 	align-items: center;
-	padding: 0.3rem 0.7rem;
+	padding: 0.5rem 0.7rem;
 
 	&__summary {
 		font-weight: 300;
@@ -45,5 +45,18 @@ input {
 		border-radius: 30px;
 		padding: 0.5rem 1rem;
 		color: c.$font;
+	}
+
+	&__image {
+		width: 90%;
+		max-height: 500px;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.article {
+		&__image {
+			max-height: 200px;
+		}
 	}
 }

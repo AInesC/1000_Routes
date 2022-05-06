@@ -12,7 +12,7 @@ export default function Search() {
 	const handleSearch = async (event) => {
 		event.preventDefault();
 
-		const url = `http://en.wikivoyage.org/w/api.php?action=query&generator=search&gsrsearch=${search}&gsrlimit=20&prop=extracts&exchars=${maxChars}&exinfo=true&explaintext&exsectionformat=plain&exlimit=max&format=json&origin=*`;
+		const url = `http://en.wikivoyage.org/w/api.php?action=query&generator=search&gsrsearch=${search}&gsrlimit=20&prop=pageimages|extracts&piprop=original|name&exchars=${maxChars}&exinfo=true&explaintext&exsectionformat=plain&exlimit=max&format=json&origin=*`;
 
 		if (search !== "") {
 			const response = await fetch(url);
@@ -53,11 +53,15 @@ export default function Search() {
 				{results &&
 					results.map((result, i) => {
 						return (
-							<SearchResult
-								key={i}
-								title={result.title}
-								extract={result.extract}
-							/>
+							<div key={i}>
+								{result.original && (
+									<SearchResult
+										title={result.title}
+										extract={result.extract}
+										imgSrc={result.original.source}
+									/>
+								)}
+							</div>
 						);
 					})}
 			</section>

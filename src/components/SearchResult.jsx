@@ -1,7 +1,8 @@
 export default function SearchResult(props) {
 	return (
 		<article className="card article">
-			<h2 className="article__title card-title">{props.title}</h2>
+			<h3 className="article__title card-title">{props.title}</h3>
+			<img className="article__image" src={props.imgSrc} alt="" />
 			<p className="article__summary">{props.extract}</p>
 			<a
 				className="article__button"

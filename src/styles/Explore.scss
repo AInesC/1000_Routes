@@ -6,14 +6,14 @@
 	margin: 0 auto;
 
 	&__title {
-		font-size: 5vmax;
+		font-size: 1.5rem;
 		font-weight: 600;
 		text-align: center;
 		padding-bottom: 0.6em;
 	}
 
 	&__description {
-		font-size: 5vmin;
+		font-size: 1rem;
 		font-weight: 200;
 		width: 90vw;
 		max-width: 1200px;
@@ -47,6 +47,14 @@
 @media screen and (min-width: 600px) {
 	.explore {
 		width: 90vw;
+
+		&__title {
+			font-size: 2rem;
+		}
+
+		&__description {
+			font-size: 1.25rem;
+		}
 	}
 
 	.explore-card {
@@ -55,7 +63,6 @@
 		}
 
 		&__subtitle {
-			font-size: 1.2rem;
 			padding: 0 1.5rem;
 		}
 	}

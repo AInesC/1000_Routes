@@ -4,10 +4,10 @@
 	max-height: 85vh;
 
 	&__carrousel {
-		position: relative;
-		max-width: 1200px;
-		margin: 0 auto;
 		height: 100%;
+		width: 100vw;
+		flex-shrink: 0;
+		transition: 750ms all ease-in-out;
 
 		img {
 			object-fit: cover;
@@ -45,6 +45,18 @@
 	&--next {
 		right: 5%;
 	}
+}
+
+.hide {
+	display: none;
+}
+
+.wrapper {
+	height: 85vh;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: hidden;
+	position: relative;
 }
 
 @media screen and (min-width: 600px) {
