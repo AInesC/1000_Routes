@@ -21,6 +21,7 @@
 		font-size: 1.2rem;
 		color: c.$font;
 		transition: all 0.3s ease-in-out;
+		display: inline-block;
 
 		&::after {
 			content: "";
@@ -49,22 +50,23 @@
 	transform: translateX(100vw);
 	transition: 0.6s;
 }
-.hide {
-}
 
 @media screen and (min-width: 600px) {
 	.menu {
 		position: static;
 		background-color: unset;
+		width: unset;
+		height: unset;
 
 		&__list {
 			justify-content: center;
 			gap: 2rem;
 			padding-top: 0;
-		}
-
-		&__list {
 			flex-direction: row;
 		}
+	}
+
+	.show {
+		transform: unset;
 	}
 }

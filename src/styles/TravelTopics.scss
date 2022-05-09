@@ -6,8 +6,6 @@
 	&__carrousel {
 		height: 100%;
 		width: 100vw;
-		flex-shrink: 0;
-		transition: 750ms all ease-in-out;
 
 		img {
 			object-fit: cover;
@@ -53,9 +51,6 @@
 
 .wrapper {
 	height: 85vh;
-	display: flex;
-	flex-wrap: nowrap;
-	overflow-x: hidden;
 	position: relative;
 }
 
