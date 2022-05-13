@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/Homepage.scss";
 import Suggestions from "./Suggestions";
 
@@ -8,7 +8,7 @@ export default function Homepage() {
 	const [status, setStatus] = useState("");
 	const [suggestions, setSuggestions] = useState("");
 
-	async function getSuggestions() {
+	async function getSuggestions(latitude, longitude) {
 		const url = `https://en.wikipedia.org/w/api.php?action=query&prop=coordinates|pageimages|description|info&inprop=url&piprop=original&generator=geosearch&ggsradius=10000&ggslimit=10&ggscoord=${latitude}|${longitude}&format=json&origin=*`;
 
 		const response = await fetch(url);
@@ -28,11 +28,7 @@ export default function Homepage() {
 			data.push(page);
 		}
 
-		if (data) {
-			setSuggestions(data);
-		} else {
-			setStatus("An error has occured, please try again.");
-		}
+		setSuggestions(data);
 	}
 
 	function getCoordinates() {
@@ -51,11 +47,11 @@ export default function Homepage() {
 	function success(position) {
 		setLatitude(position.coords.latitude);
 		setLongitude(position.coords.longitude);
-
-		if (latitude && longitude) {
-			getSuggestions();
-		}
 	}
+
+	useEffect(() => {
+		getSuggestions(latitude, longitude);
+	}, [latitude, longitude]);
 
 	return (
 		<main>
