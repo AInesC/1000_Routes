@@ -24,10 +24,49 @@
 		fill: rgba(255, 255, 255, 0.5);
 	}
 }
+.row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.places-near {
+	position: absolute;
+	top: 100vh;
+	max-width: 1200px;
+	padding-top: 2rem;
+	min-height: 30vh;
+	display: grid;
+	gap: 1rem;
+
+	&__title {
+		font-size: 1.5rem;
+		font-weight: 600;
+	}
+
+	&__btn {
+		color: c.$font;
+		border: 2px solid c.$font;
+		border-radius: 30px;
+		padding: 0.5rem 0.7rem;
+	}
+}
 
 @media screen and (min-width: 641px) {
 	.hero {
 		background-image: url(../../public/images/homepage/homepage.jpg);
 		background-size: cover;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.places-near {
+		width: 90vw;
+		left: 50%;
+		transform: translateX(-50%);
+
+		&__title {
+			font-size: 2rem;
+		}
 	}
 }

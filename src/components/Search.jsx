@@ -12,16 +12,18 @@ export default function Search() {
 	const handleSearch = async (event) => {
 		event.preventDefault();
 
-		const url = `http://en.wikivoyage.org/w/api.php?action=query&generator=search&gsrsearch=${search}&gsrlimit=20&prop=pageimages|extracts&piprop=original|name&exchars=${maxChars}&exinfo=true&explaintext&exsectionformat=plain&exlimit=max&format=json&origin=*`;
+		const url = `https://en.wikivoyage.org/w/api.php?action=query&generator=search&gsrsearch=${search}&gsrlimit=20&prop=pageimages|extracts&piprop=original&exchars=${maxChars}&exinfo=true&explaintext&exsectionformat=plain&exlimit=max&format=json&origin=*`;
 
 		if (search !== "") {
 			const response = await fetch(url);
+
+			if (!response.ok) {
+				const message = `An error has occured: ${response.status}`;
+				throw new Error(message);
+			}
 			const json = await response.json();
 			const pagesObj = await json.query.pages;
-
 			const pages = Object.values(pagesObj);
-
-			console.log(pages);
 
 			const data = [];
 
