@@ -24,23 +24,23 @@
 
 .explore-card {
 	width: 100%;
+	height: max-content;
 	padding-bottom: 1rem;
 
-	&__title,
-	&__subtitle {
+	&__text {
+		display: grid;
+		gap: 1rem;
+		justify-items: start;
 		padding-left: 1rem;
+		padding-top: 1rem;
+	}
+
+	&__button {
+		margin-left: 1rem;
 	}
 
 	&__image {
 		object-fit: cover;
-	}
-
-	&__title {
-		padding-bottom: 0.5em;
-
-		a {
-			color: c.$font;
-		}
 	}
 }
 
@@ -54,6 +54,10 @@
 
 		&__description {
 			font-size: 1.25rem;
+		}
+
+		&__grid {
+			padding-top: 2rem;
 		}
 	}
 

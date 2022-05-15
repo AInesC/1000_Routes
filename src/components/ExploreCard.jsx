@@ -6,12 +6,19 @@ export default function ExploreCard(props) {
 				src={props.imgSrc}
 				alt=""
 			/>
-			<h3 className="explore-card__title card-title">
-				<a href={props.link} title={props.linkInfo}>
-					{props.name}
+			<div className="explore-card__text">
+				<h3 className="explore-card__title card-title">{props.name}</h3>
+				<p className="explore-card__subtitle">{props.phrase}</p>
+
+				<a
+					className="explore-card__button article__button"
+					href={props.link}
+					target="_blank"
+					title={props.linkInfo}
+				>
+					Go to page
 				</a>
-			</h3>
-			<p className="explore-card__subtitle">{props.phrase}</p>
+			</div>
 		</div>
 	);
 }

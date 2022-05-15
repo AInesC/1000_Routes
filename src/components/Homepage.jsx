@@ -1,15 +1,29 @@
 import { useEffect, useState } from "react";
-import "../styles/Homepage.scss";
+import {
+	MapContainer,
+	Marker,
+	Popup,
+	TileLayer,
+	useMapEvents,
+} from "react-leaflet";
 import Suggestions from "./Suggestions";
+import "../styles/Homepage.scss";
+import LocationMarker from "./LocationMarker";
 
 export default function Homepage() {
+	const DEFAULT_LATITUDE = 38.725267;
+	const DEFAULT_LONGITUDE = -9.150019;
+	const [location, setLocation] = useState([
+		DEFAULT_LATITUDE,
+		DEFAULT_LONGITUDE,
+	]);
 	const [latitude, setLatitude] = useState("");
 	const [longitude, setLongitude] = useState("");
 	const [status, setStatus] = useState("");
 	const [suggestions, setSuggestions] = useState("");
 
 	async function getSuggestions(latitude, longitude) {
-		const url = `https://en.wikipedia.org/w/api.php?action=query&prop=coordinates|pageimages|description|info&inprop=url&piprop=original&generator=geosearch&ggsradius=10000&ggslimit=10&ggscoord=${latitude}|${longitude}&format=json&origin=*`;
+		const url = `https://en.wikipedia.org/w/api.php?action=query&prop=coordinates|pageimages|description|info&inprop=url&piprop=original&generator=geosearch&ggsradius=10000&ggslimit=12&ggscoord=${latitude}|${longitude}&format=json&origin=*`;
 
 		const response = await fetch(url);
 
@@ -19,8 +33,6 @@ export default function Homepage() {
 		const json = await response.json();
 		const pagesObj = await json.query.pages;
 		const pages = Object.values(pagesObj);
-
-		console.log("pages", pages);
 
 		const data = [];
 
@@ -67,6 +79,7 @@ export default function Homepage() {
 					</svg>
 				</div>
 			</section>
+			<div className="fill"></div>
 			<section aria-labelledby="nearby" className="places-near">
 				<div className="row">
 					<h2 id="nearby" className="places-near__title">
@@ -75,10 +88,6 @@ export default function Homepage() {
 					<button onClick={getCoordinates} className="places-near__btn">
 						Get your location
 					</button>
-				</div>
-				<div>
-					<p>Latitude: {latitude}</p>
-					<p>Longitude: {longitude}</p>
 				</div>
 				<div className="grid--auto-fit">
 					{suggestions ? (
@@ -99,6 +108,19 @@ export default function Homepage() {
 						<p>{status}</p>
 					)}
 				</div>
+				<MapContainer center={location} zoom={15} scrollWheelZoom={false}>
+					<TileLayer
+						attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+					/>
+
+					<LocationMarker
+						location={location}
+						setLocation={setLocation}
+						DEFAULT_LATITUDE={DEFAULT_LATITUDE}
+						DEFAULT_LONGITUDE={DEFAULT_LONGITUDE}
+					/>
+				</MapContainer>
 			</section>
 		</main>
 	);
