@@ -1,27 +1,18 @@
 import { useEffect, useState } from "react";
-import {
-	MapContainer,
-	Marker,
-	Popup,
-	TileLayer,
-	useMapEvents,
-} from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import Suggestions from "./Suggestions";
 import "../styles/Homepage.scss";
-import LocationMarker from "./LocationMarker";
 
 export default function Homepage() {
 	const DEFAULT_LATITUDE = 38.725267;
 	const DEFAULT_LONGITUDE = -9.150019;
-	const [location, setLocation] = useState([
-		DEFAULT_LATITUDE,
-		DEFAULT_LONGITUDE,
-	]);
+	const location = [DEFAULT_LATITUDE, DEFAULT_LONGITUDE];
 	const [latitude, setLatitude] = useState("");
 	const [longitude, setLongitude] = useState("");
 	const [status, setStatus] = useState("");
 	const [suggestions, setSuggestions] = useState("");
 
+	// FETCH DATA FROM WIKIMEDIA API
 	async function getSuggestions(latitude, longitude) {
 		const url = `https://en.wikipedia.org/w/api.php?action=query&prop=coordinates|pageimages|description|info&inprop=url&piprop=original&generator=geosearch&ggsradius=10000&ggslimit=12&ggscoord=${latitude}|${longitude}&format=json&origin=*`;
 
@@ -31,18 +22,21 @@ export default function Homepage() {
 			setStatus(`An error has occured: ${response.status}`);
 		}
 		const json = await response.json();
-		const pagesObj = await json.query.pages;
-		const pages = Object.values(pagesObj);
+		const pagesObj = await json.query;
+		if (pagesObj && pagesObj.hasOwnProperty("pages")) {
+			const pages = Object.values(pagesObj.pages);
 
-		const data = [];
+			const data = [];
 
-		for (let page of pages) {
-			data.push(page);
+			for (let page of pages) {
+				data.push(page);
+			}
+
+			setSuggestions(data);
 		}
-
-		setSuggestions(data);
 	}
 
+	// GET COODINATES FROM GEOLOCATION API
 	function getCoordinates() {
 		if (navigator.geolocation) {
 			setStatus("Loading...");
@@ -52,10 +46,12 @@ export default function Homepage() {
 		}
 	}
 
+	// ERROR HANDLING
 	function error() {
 		setStatus("Unable to retrieve your location");
 	}
 
+	// UPDATING STATE
 	function success(position) {
 		setLatitude(position.coords.latitude);
 		setLongitude(position.coords.longitude);
@@ -89,7 +85,52 @@ export default function Homepage() {
 						Get your location
 					</button>
 				</div>
-				<div className="grid--auto-fit">
+				{suggestions && (
+					<div className="map">
+						<MapContainer
+							center={[latitude, longitude]}
+							zoom={12}
+							scrollWheelZoom={false}
+						>
+							<TileLayer
+								attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+								url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+							/>
+							{suggestions ? (
+								suggestions.map((suggestion, i) => {
+									if (suggestion.coordinates) {
+										return (
+											<Marker
+												key={i}
+												position={[
+													suggestion.coordinates[0].lat,
+													suggestion.coordinates[0].lon,
+												]}
+											>
+												<Popup className="popup">
+													<h3 className="popup__title">{suggestion.title}</h3>
+													{suggestion.original && (
+														<img
+															className="popup__image"
+															src={suggestion.original.source}
+															alt=""
+														/>
+													)}
+													<p>{suggestion.description}</p>
+												</Popup>
+											</Marker>
+										);
+									}
+								})
+							) : (
+								<Marker position={location}>
+									<Popup>You are here</Popup>
+								</Marker>
+							)}
+						</MapContainer>
+					</div>
+				)}
+				<div className="grid--auto-fit suggestions">
 					{suggestions ? (
 						suggestions.map((suggestion, i) => {
 							return (
@@ -108,19 +149,6 @@ export default function Homepage() {
 						<p>{status}</p>
 					)}
 				</div>
-				<MapContainer center={location} zoom={15} scrollWheelZoom={false}>
-					<TileLayer
-						attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-					/>
-
-					<LocationMarker
-						location={location}
-						setLocation={setLocation}
-						DEFAULT_LATITUDE={DEFAULT_LATITUDE}
-						DEFAULT_LONGITUDE={DEFAULT_LONGITUDE}
-					/>
-				</MapContainer>
 			</section>
 		</main>
 	);
