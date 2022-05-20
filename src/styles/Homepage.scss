@@ -40,7 +40,6 @@
 .places-near {
 	max-width: 1200px;
 	padding: 4rem 0;
-	min-height: 80vh;
 	height: max-content;
 	display: grid;
 	margin: 0 auto;
@@ -48,13 +47,6 @@
 	&__title {
 		font-size: 1.5rem;
 		font-weight: 600;
-	}
-
-	&__btn {
-		color: c.$font;
-		border: 2px solid c.$font;
-		border-radius: 30px;
-		padding: 0.5rem 0.7rem;
 	}
 }
 

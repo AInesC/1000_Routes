@@ -4,7 +4,7 @@ export default function Suggestions(props) {
 			<h3 className="card-title article__title">{props.title}</h3>
 			<img className="article__image" src={props.imgSrc} alt="" />
 			<a
-				className="article__button"
+				className="btn"
 				href={props.fullUrl}
 				target="_blank"
 				title={`Go to Wikipedia ${props.title} page`}

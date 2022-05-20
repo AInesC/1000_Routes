@@ -30,6 +30,13 @@ svg {
 a {
 	color: c.$font;
 }
+.btn {
+	border: 2px solid c.$font;
+	border-radius: 30px;
+	padding: 0.5rem 1rem;
+	color: c.$font;
+	transition: all 0.3s ease-in;
+}
 
 .grid--auto-fit {
 	display: grid;
@@ -60,5 +67,12 @@ a {
 
 	.card-title {
 		font-size: 1.5rem;
+	}
+
+	.btn {
+		&:hover {
+			color: c.$black;
+			background-color: c.$font;
+		}
 	}
 }

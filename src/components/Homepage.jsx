@@ -81,7 +81,7 @@ export default function Homepage() {
 					<h2 id="nearby" className="places-near__title">
 						Based on your location...
 					</h2>
-					<button onClick={getCoordinates} className="places-near__btn">
+					<button onClick={getCoordinates} className="places-near__button btn">
 						Get your location
 					</button>
 				</div>

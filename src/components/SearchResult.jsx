@@ -5,7 +5,7 @@ export default function SearchResult(props) {
 			<img className="article__image" src={props.imgSrc} alt="" />
 			<p className="article__summary">{props.extract}</p>
 			<a
-				className="article__button"
+				className="article__button btn"
 				href={`https://en.wikivoyage.org/w/index.php?title=${props.title}`}
 				target="_blank"
 				title={`Go to WikiVoyage ${props.title} page`}

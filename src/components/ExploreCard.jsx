@@ -11,7 +11,7 @@ export default function ExploreCard(props) {
 				<p className="explore-card__subtitle">{props.phrase}</p>
 
 				<a
-					className="explore-card__button article__button"
+					className="explore-card__button btn"
 					href={props.link}
 					target="_blank"
 					title={props.linkInfo}

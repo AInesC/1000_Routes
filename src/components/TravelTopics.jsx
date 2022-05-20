@@ -81,7 +81,7 @@ export default function TravelTopics() {
 							<button
 								type="button"
 								id="previous"
-								className="btn btn--previous"
+								className="previous"
 								title="Show previous image"
 								onClick={previousSlide}
 							>
@@ -98,7 +98,7 @@ export default function TravelTopics() {
 							<button
 								type="button"
 								id="next"
-								className="btn btn--next"
+								className="next"
 								title="Show next image"
 								onClick={nextSlide}
 							>
@@ -106,14 +106,22 @@ export default function TravelTopics() {
 									<path d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
 								</svg>
 							</button>
-							<h3 className="travel-topics__title">
-								<a href={topic.link} title={topic.linkInfo}>
-									{topic.title}
+							<div className="caption">
+								<div className="text">
+									<h3 className="travel-topics__title">{topic.title}</h3>
+									<p className="travel-topics__phrase" id="topics-text">
+										{topic.text}
+									</p>
+								</div>
+								<a
+									href={topic.link}
+									title={topic.linkInfo}
+									target="_blank"
+									className="btn"
+								>
+									Go to page
 								</a>
-							</h3>
-							<p className="travel-topics__phrase" id="topics-text">
-								{topic.text}
-							</p>
+							</div>
 						</div>
 					);
 				})}

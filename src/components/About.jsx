@@ -13,8 +13,18 @@ export default function About() {
 						anonymity.
 					</p>
 					<p className="about__description">
-						Our website does not store any information about the user. You are
-						free to share your geolocation to receive suggestions near you.
+						Our website does not store any information about the users. You may
+						choose to share your geolocation to receive suggestions of
+						destinations near you.
+					</p>
+					<p className="about__description">
+						<strong>DISCLAIMER: </strong>
+						<em>
+							This website uses text and photos from Wikipedia, Wikivoyage and
+							WikiCommons and redirects users to some of their pages. This is a
+							personal project and is not meant for commercial use. We are not
+							affiliated with the Wikimedia group.
+						</em>
 					</p>
 				</div>
 			</div>
