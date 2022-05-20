@@ -108,7 +108,7 @@ export default function TravelTopics() {
 							</button>
 							<div className="caption">
 								<div className="text">
-									<h3 className="travel-topics__title">{topic.title}</h3>
+									<h2 className="travel-topics__title">{topic.title}</h2>
 									<p className="travel-topics__phrase" id="topics-text">
 										{topic.text}
 									</p>

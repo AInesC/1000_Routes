@@ -37,6 +37,7 @@ export default function Search() {
 
 	return (
 		<main>
+			<h2 className="title">Search</h2>
 			<form onSubmit={handleSearch}>
 				<input
 					type="search"
